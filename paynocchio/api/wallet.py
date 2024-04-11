@@ -54,13 +54,12 @@ def get_wallets(self, params: dict) -> dict:
     return self.sign_request('wallet', 'GET', '/wallet', params=params)
 
 
-def get_wallet(self, wallet_id: str, params: dict) -> dict:
+def get_wallet(self, wallet_uuid: str, params: dict) -> dict:
     """
     To get wallet by id with balance.
 
     params:
-        env_id: UUID Admin panel environment ID
-        user_id: UUID External system user id
+        environment_uudid: UUID Admin panel environment ID
     
     Response:
         uuid: UUID4
@@ -78,7 +77,7 @@ def get_wallet(self, wallet_id: str, params: dict) -> dict:
         created_at: datetime
         rewarding_balance: int
     """
-    return self.sign_request('wallet', 'GET', f'/wallet/{wallet_id}', params=params)
+    return self.sign_request('wallet', 'GET', f'/wallet/{wallet_uuid}', params=params)
 
 
 def withdraw_wallet(self, data: dict) -> dict:
@@ -132,3 +131,59 @@ def payment_wallet(self, data: dict) -> dict:
         environment_uuid: UUID4
     """
     return self.sign_request('wallet', 'POST', '/wallet/payment', body_data=data)
+
+
+def get_wallets_by_environment(self, environment_uuid: str) -> dict:
+    """
+    To get list of wallets of the authorized user by environment.
+
+    Args:
+        environment_uuid: str.
+    
+    Response:
+        wallets: list[
+            uuid: UUID4
+            user_uuid: UUID4
+            currency: CurrencySchema(
+                alphabetic_code: str
+                numeric_code: str
+                minor_unit: str
+            )
+            balance: BalanceSchema(
+                iso_currency_code: str
+                current: int
+            )
+            number: int
+            created_at: datetime
+            rewarding_balance: int
+        ]
+    """
+    return self.sign_request('wallet', 'GET', f'/wallet/{environment_uuid}/get_list')
+
+
+def update_wallet(self, params: dict) -> dict:
+    """
+    To update wallet.
+
+    params:
+        uuid: UUID4.
+        environment_uuid: UUID4.
+        status_uuid: UUID4.
+    
+    Response:
+        uuid: UUID4
+        user_uuid: UUID4
+        currency: CurrencySchema(
+            alphabetic_code: str
+            numeric_code: str
+            minor_unit: str
+        )
+        balance: BalanceSchema(
+            iso_currency_code: str
+            current: int
+        )
+        number: int
+        created_at: datetime
+        rewarding_balance: int
+    """
+    return self.sign_request('wallet', 'PATCH', '/wallet', params=params)

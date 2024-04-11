@@ -14,23 +14,24 @@ def get_order_list(self, params: dict) -> dict:
         limit: int.
     
     Response:
-        id: str.
-        created_at: datetime.
-        wallet_id: str.
-        user_id: str.
-        product_id: UUID4.
-        amount: float.
-        status_code: str.
+        list[
+        {
+            id: str.
+            created_at: datetime.
+            wallet_id: str.
+            user_id: str.
+            product_id: UUID4.
+            amount: float.
+            status_code: str.
+        }
+        ]
     """
-    return self.sign_request('transaction', 'GET', '/wallet', params=params)
+    return self.sign_request('transaction', 'GET', '/orders', params=params)
 
 
-def get_order(self, params: dict) -> dict:
+def get_order(self, order_uuid: str) -> dict:
     """
     Get order by uuid.
-
-    params:
-        uuid: UUID4.
     
     Response:
         id: str.
@@ -41,4 +42,4 @@ def get_order(self, params: dict) -> dict:
         status_code: str.
 
     """
-    return self.sign_request('transaction', 'GET', '/wallet', params=params)
+    return self.sign_request('transaction', 'GET', f'/orders/{order_uuid}')
