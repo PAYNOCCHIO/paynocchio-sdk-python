@@ -1,5 +1,3 @@
-import json
-
 from paynocchio.exceptions import exception_status_code
 from requests import Response
 
