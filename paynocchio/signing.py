@@ -10,8 +10,7 @@ def sign_request(
         method: str,
         endpoint: str,
         params: dict = None,
-        body_data: dict = None,
-        test_mode: str = "off"
+        body_data: dict = None
 ) -> dict:
     url = f'https://{self.base_uri}{endpoint}'
     response = requests.request(
@@ -19,7 +18,7 @@ def sign_request(
         url=url,
         headers={
             "X-Wallet-Signature": self.api_key,
-            "X-Test-Mode-Switch": test_mode
+            "X-Test-Mode-Switch": self.test_mode
             },
         data=json.dumps(body_data),
         params=params
