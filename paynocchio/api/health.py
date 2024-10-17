@@ -17,8 +17,8 @@ def get_health(self) -> dict:
 
     Returns:
         dict: A dictionary containing the database health status:
-            - **database** (str): A string indicating the health of the database. Possible value:
-                - `"ok"`: The database is functioning properly.
+            database (str): A string indicating the health of the database. Possible value:
+                `"ok"`: The database is functioning properly.
 
     Example Response:
         {
@@ -37,14 +37,14 @@ def check_signature(self, data: dict) -> dict:
 
     Parameters:
         data (dict): A dictionary containing the following keys:
-            - **environment_uuid** (UUID): The unique identifier for the environment where the API call is being made.
-            - **secret_key** (UUID): The API key used for authentication.
+            environment_uuid (UUID): The unique identifier for the environment where the API call is being made.
+            secret_key (UUID): The API key used for authentication.
 
     Returns:
         dict: A dictionary containing the integration status:
-            - **integration_status** (str): HTTP status code indicating the result of the validation (e.g., "200").
-            - **message** (str): A message providing additional context, typically confirming successful validation (e.g., "Integration is approved").
-            - **status_code** (int): The HTTP status code of the response.
+            integration_status (str): HTTP status code indicating the result of the validation (e.g., "200").
+            message (str): A message providing additional context, typically confirming successful validation (e.g., "Integration is approved").
+            status_code (int): The HTTP status code of the response.
 
     Example Response:
         {
