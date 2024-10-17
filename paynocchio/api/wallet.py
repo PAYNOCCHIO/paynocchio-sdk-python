@@ -190,7 +190,7 @@ def calculate_commissions_and_bonuses(self, params: dict) -> dict:
             wallet_uuid (str): The UUID of the wallet related to the operation.
             conversion_rate (float): The conversion rate applicable to the transaction.
             operations_data (list): A list of operation details, where each entry contains:
-                type_operation (str): The type of operation (e.g., "withdrawal", "deposit").
+                type_operation (str): The type of operation (e.g., "payment_operation_add_money", "payment_operation_for_services").
                 full_amount (float): The total amount involved in the operation.
                 bonuses_amount (int): The amount of bonuses earned from the operation.
                 commission_amount (float): The commission charged for the operation.
@@ -211,7 +211,7 @@ def get_wallets(self, environment_uuid: str, params: dict) -> dict:
         params (dict): A dictionary containing optional query parameters for the request. Possible keys include:
             user_uuid (str, optional): The UUID of a specific user to filter the wallets.
             status_code (str, optional): The status code to filter wallets based on their current status.
-            limit (int, optional): The maximum number of wallets to return in the response.
+            size (int, optional): The maximum number of wallets to return in the response.
             page (int, optional): The page number for pagination (default is 1).
 
     Returns:
@@ -249,7 +249,7 @@ def get_wallets_by_user_uuid(self, environment_uuid: str, user_uuid: str, params
         environment_uuid (str): The UUID of the environment from which to retrieve the wallets (required).
         user_uuid (str): The UUID of the user whose wallets are being retrieved (required).
         params (dict): A dictionary containing optional query parameters for the request. Possible keys include:
-            limit (int, optional): The maximum number of wallets to return in the response.
+            size (int, optional): The maximum number of wallets to return in the response.
             page (int, optional): The page number for pagination (default is 1).
             status_code (str, optional): The status code to filter wallets based on their current status.
 

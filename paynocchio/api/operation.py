@@ -33,7 +33,7 @@ def topup_wallet(self, data: dict) -> dict:
                 interaction_method (str): The method used for the transaction (e.g., "web").
                 payment_request_uuid (UUID): A unique identifier for the payment request.
                 stripe_product_id (str): The identifier for the Stripe product associated with the top-up.
-                type_operation (str): The type of operation being performed (e.g., "add money").
+                type_operation (str): The type of operation being performed (e.g., "payment_operation_add_money").
                 user_uuid (UUID): The unique identifier of the user initiating the top-up.
                 wallet_uuid (UUID): The unique identifier of the wallet to be credited.
                 x_forwarded_for (str): The IP address from which the request originated.
@@ -92,7 +92,7 @@ def withdraw_wallet(self, data: dict) -> dict:
                 environment_uuid (str): The unique identifier of the environment.
                 user_uuid (str): The unique identifier of the user.
                 wallet_uuid (str): The unique identifier of the wallet used for the withdrawal.
-                type_operation (str): The type of operation performed, in this case "withdraw".
+                type_operation (str): The type of operation performed, in this case "payment_operation_withdraw".
                 currency (str): The ISO 4217 3-letter currency code for the transaction.
                 amount (float): The transaction amount that was withdrawn.
                 x_forwarded_for (str): The IP address from which the request was made.
