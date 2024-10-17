@@ -13,6 +13,7 @@ class Api(ABC):
                                        )
     from paynocchio.api.order import get_order, get_orders_by_wallet_uuid
     from paynocchio.api.operation import  topup_wallet, payment_wallet, withdraw_wallet
+    from paynocchio.api.health import get_health, check_signature
     from paynocchio.api.status import get_status
 
     from paynocchio.signing import sign_request

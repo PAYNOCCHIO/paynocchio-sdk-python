@@ -296,6 +296,8 @@ response = client.get_orders_by_wallet_uuid(
 
 This API method allows users to top up their wallet by a specified amount using a bank card. The process requires the environment, user, and wallet details, as well as the amount to be credited and a redirect URL for the post-payment flow.
 
+---
+
 #### Example Usage
 ```python
 response = client.topup_wallet(
@@ -366,6 +368,41 @@ response = client.withdraw_wallet(
 * **currency** (string, required): The ISO 4217 3-letter code for the currency of the transaction (e.g., "USD").
 * **amount** (float, required): The amount of money to withdraw from the wallet. This must be a positive value.
 
+## Operation
+
+### Check if Service is working
+
+This API method checks if the database connection is healthy and returns a status indicating whether the service is operational.
+
+---
+
+#### Example Usage
+```python
+response = client.get_health()
+```
+
+### Check if API key and Environment UUID are valid
+
+This API method verifies the validity of the provided API key and Environment UUID. It's used to ensure that the integration is properly configured with a valid environment and API credentials.
+
+---
+
+#### Example Usage
+```python
+response = client.check_signature(
+    data={
+        "environment_uuid": "a2860217-a6b2-4fb3-9a7b-32e123651e16",
+        "secret_key": "f2c24b92-d7e2-49f6-a111-12b44c564c63"
+    }
+)
+```
+
+**Request Parameters**
+
+...
+- **secret_key** (UUID): The API key obtained in Development section of the Paynocchio Control panel.
+
+
 ## Team
 
 - __Abay Serkebayev__        | CEO / Founder
@@ -385,4 +422,4 @@ See [CHANGELOG.md](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/
 MIT [license](https://github.com/PAYNOCCHIO/paynocchio-api-alpha/blob/main/LICENSE)
 
 ## Stay in touch
-[our site](https://paynocchio.com/team)
+[our site](https://paynocchio.com/)
