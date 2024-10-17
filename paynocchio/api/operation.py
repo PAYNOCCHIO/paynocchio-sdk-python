@@ -73,3 +73,31 @@ def payment_wallet(self, data: dict) -> dict:
     """
     return self.sign_request('operation', 'POST', '/operation/payment', body_data=data)
 
+
+def withdraw_wallet(self, data: dict) -> dict:
+    """
+    Initiates a withdrawal from the user's wallet.
+
+    Parameters:
+        data (dict): A dictionary containing the following keys:
+            **environment_uuid** (str): The unique identifier for the environment where the transaction is made.
+            **user_uuid** (str): The unique identifier for the user requesting the withdrawal.
+            **wallet_uuid** (str): The unique identifier for the user's wallet from which the funds are to be withdrawn.
+            **currency** (str): The ISO 4217 3-letter code for the transaction currency (e.g., "USD").
+            **amount** (float): The amount of money to be withdrawn from the wallet. Must be a positive value.
+
+    Returns:
+        dict: A dictionary containing the following keys:
+            **schemas** (dict): Details of the withdrawal transaction:
+                **environment_uuid** (str): The unique identifier of the environment.
+                **user_uuid** (str): The unique identifier of the user.
+                **wallet_uuid** (str): The unique identifier of the wallet used for the withdrawal.
+                **type_operation** (str): The type of operation performed, in this case "withdraw".
+                **currency** (str): The ISO 4217 3-letter currency code for the transaction.
+                **amount** (float): The transaction amount that was withdrawn.
+                **x_forwarded_for** (str): The IP address from which the request was made.
+            **type_interactions** (str): A description of the interaction type, e.g., "success.interaction".
+            **interaction** (str): The payment provider used for the transaction, e.g., "stripe".
+    """
+    return self.sign_request('operation', 'POST', '/operation/withdraw', body_data=data)
+

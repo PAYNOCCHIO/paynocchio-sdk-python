@@ -341,6 +341,31 @@ response = client.payment_wallet(
 * **full_amount** (float, required): The total amount for the transaction, including bonuses or adjustments.
 * **bonus_amount** (float, optional): Any additional bonus amount applied to the transaction.
 
+
+### Withdrawal from Wallet
+
+This API method allows users to initiate a withdrawal from their wallet. It requires the user’s unique identifiers, the amount to withdraw, and the currency for the transaction.
+
+---
+
+#### Example Usage
+```python
+response = client.withdraw_wallet(
+    data={
+        "environment_uuid": "a2860217-a6b2-4fb3-9a7b-32e123651e16",
+        "user_uuid": "a2820337-a6b2-4fb9-9a1b-32q217651e55",
+        "wallet_uuid": "5eea41d8-e459-4f41-91cd-763fe7708f8e", 
+        "currency": "USD",  
+        "amount": 20  
+    }
+)
+```
+**Request Parameters**
+
+...
+* **currency** (string, required): The ISO 4217 3-letter code for the currency of the transaction (e.g., "USD").
+* **amount** (float, required): The amount of money to withdraw from the wallet. This must be a positive value.
+
 ## Team
 
 - __Abay Serkebayev__        | CEO / Founder

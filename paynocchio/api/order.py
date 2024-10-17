@@ -19,10 +19,6 @@ def get_order(self, order_uuid: str, params: dict) -> dict:
         environment_uuid: UUID Admin panel environment ID.
         user_uuid: UUID External system user id.
 
-    headers:
-        X-Wallet-Signature: sha256
-        X-Test-Mode-Switch: on/off
-
     Response:
         uuid: unique identifier of the order.
         wallet_uuid: unique identifier of the wallet linked to the order.
@@ -57,11 +53,6 @@ def get_orders_by_wallet_uuid(self, params: dict) -> dict:
             environment_uuid (UUID): The unique identifier of the admin panel environment.
             user_uuid (UUID): The external system user's unique identifier.
             wallet_uuid (UUID): The external system wallet's unique identifier.
-
-    headers:
-        X-Wallet-Signature: A SHA256 hash used to validate the authenticity of the request.
-        X-Test-Mode-Switch: A header to toggle test mode (default: off).
-
     """
 
     return self.sign_request('order', 'GET', f'/orders', params=params)
