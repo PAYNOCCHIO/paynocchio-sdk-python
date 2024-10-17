@@ -31,14 +31,14 @@ def get_health(self) -> dict:
 
 def check_signature(self, data: dict) -> dict:
     """
-    Validate API Key and Environment.
+    Validate API Key and Wallet group UUID.
 
     This method checks whether the provided API key and environment UUID are valid for integration purposes. It ensures that the API key is recognized and that the environment is correctly configured.
 
     Parameters:
         data (dict): A dictionary containing the following keys:
             environment_uuid (UUID): The unique identifier for the environment where the API call is being made.
-            secret_key (UUID): The API key used for authentication.
+            secret_key (UUID): The API key of the wallet group obtained from Paynocchio control panel.
 
     Returns:
         dict: A dictionary containing the integration status:
