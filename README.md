@@ -45,7 +45,7 @@ pip3 install paynocchio
 
 This example demonstrates how to integrate and use the Paynocchio API to create a wallet for a specific user in a controlled wallet group.
 
-## Steps:
+### Steps:
 
 1. **Import the Paynocchio Client**:  
    The first step is importing the `Client` class from the `paynocchio` library and the `uuid4` function from the `uuid` module for user identification.
@@ -63,7 +63,7 @@ This example demonstrates how to integrate and use the Paynocchio API to create 
 4. **Create a Wallet for the User**:  
    Using the `create_wallet` method, a wallet is created for the user within a specific wallet group. You'll pass a dictionary containing the environment UUID and user UUID as part of the request.
 
-## Example Code
+## Establish a Client Connection
 
 ```python
 # Import paynocchio client
@@ -87,7 +87,7 @@ client = Client(
 
 ```
 
-### Create Wallet
+## Create Wallet
 
  Create wallet for specified user with specified wallet group
 
@@ -111,7 +111,7 @@ The UUID representing the wallet group where the reward group is configured. Thi
 - **user_uuid** (string, required):
 The UUID of the user for whom the calculation is being made. This identifies the external user tied to the transaction.
 
-### Get Available Wallet Statuses
+## Get Available Wallet Statuses
 
 This example demonstrates how to retrieve the available statuses for wallets using the Paynocchio API. 
 
@@ -125,7 +125,7 @@ statuses = client.get_status()
 
 ```
 
-### Update Wallet Status
+## Update Wallet Status
 
 This example demonstrates how to update the status of a specific wallet using the Paynocchio API. The `update_wallet_status` method allows you to change the status of a wallet based on its unique identifier.
 
@@ -154,7 +154,7 @@ The UUID of the wallet that belongs to the user. This parameter is mandatory, bu
 The UUID of the actual wallet status obtained with `client.get_status()` function
 
 
-### Get Wallet Group Status
+## Get Wallet Group Structure
 
 This example demonstrates how to retrieve the structure and status of wallets within a specific wallet group using the Paynocchio API. The `wallet_environment_structure` method provides details about wallet groups and their statuses for a particular user in a specified environment.
 
@@ -170,7 +170,7 @@ response = client.wallet_environment_structure(
 )
 ```
 
-### Get Wallet Transaction History
+## Get Wallet Transaction History
 
 This example demonstrates how to retrieve the transaction history of a specific wallet using the Paynocchio API. The `wallet_transaction_history` method provides details about transactions associated with a wallet for a particular user in a specified environment.
 
@@ -190,7 +190,7 @@ response = client.wallet_transaction_history(
 
 ```
 
-### Calculate commissions and bonuses
+## Calculate commissions and bonuses
 This API method calculates the commissions and bonuses based on a provided transaction amount and the active reward group within a given environment. The calculation can be performed for different types of operations, and it supports scenarios where no wallet exists, such as for anonymous users.
 
 ```python
@@ -221,7 +221,7 @@ Specifies the exact operation type (e.g., `payment_operation_add_money` and `pay
 Indicates whether to check the balance of the wallet when performing the calculation. Set this to false when there is no wallet available (e.g., for anonymous users).
 
 
-### Get the list of the wallets within an Environment
+## Get the list of the wallets within a Wallet Group
 This API method retrieves a list of wallets associated with a specified environment. It allows you to paginate the results to manage large sets of data effectively.
 ```python
 
@@ -236,7 +236,7 @@ response = client.get_wallets(
 
 ```
 
-### Get Wallet balance
+## Get Wallet balance
 This API method retrieves the current balance of a specified wallet. It allows users to check the amount of funds available in their wallet within a given environment.
 
 ```python
@@ -251,8 +251,8 @@ response = client.get_wallet(
 
 ```
 
-## Order
-### Get Order by UUID
+# Orders
+## Get Order by UUID
 The `get_order` method retrieves detailed information about a specific order by its UUID. This method is part of a service that communicates with an external system to manage orders, including signature validation and test mode switching via headers.
 
 ```python
@@ -274,7 +274,7 @@ response = client.get_order(
 The unique identifier (UUID) of the order that needs to be fetched.
 
 
-### Get All Orders by Wallet UUID
+## Get All Orders by Wallet UUID
 
 This section describes how to retrieve all orders associated with a specific wallet UUID using the `get_orders_by_wallet_uuid` method from the client.
 
@@ -290,9 +290,9 @@ response = client.get_orders_by_wallet_uuid(
 
 ```
 
-## Operation
+# Operations
 
-### Top Up Wallet
+## Top Up Wallet
 
 This API method allows users to top up their wallet by a specified amount using a bank card. The process requires the environment, user, and wallet details, as well as the amount to be credited and a redirect URL for the post-payment flow.
 
@@ -317,7 +317,7 @@ response = client.topup_wallet(
 - **redirect_url** (string, required): The URL to redirect the user to after the top-up process. Example: "https://your-super-app.site".
 
 
-### Payment from Wallet
+## Payment from Wallet
 
 This API method initiates a payment from a user's wallet for customer services. It requires the environment, user, wallet details, and payment amount, along with an external order ID and other relevant payment details.
 
@@ -344,7 +344,7 @@ response = client.payment_wallet(
 * **bonus_amount** (float, optional): Any additional bonus amount applied to the transaction.
 
 
-### Withdrawal from Wallet
+## Withdrawal from Wallet
 
 This API method allows users to initiate a withdrawal from their wallet. It requires the user’s unique identifiers, the amount to withdraw, and the currency for the transaction.
 
@@ -368,9 +368,9 @@ response = client.withdraw_wallet(
 * **currency** (string, required): The ISO 4217 3-letter code for the currency of the transaction (e.g., "USD").
 * **amount** (float, required): The amount of money to withdraw from the wallet. This must be a positive value.
 
-## Operation
+# Health
 
-### Check if Service is working
+## Check if Service is working
 
 This API method checks if the database connection is healthy and returns a status indicating whether the service is operational.
 
@@ -381,7 +381,7 @@ This API method checks if the database connection is healthy and returns a statu
 response = client.get_health()
 ```
 
-### Check if API key and Environment UUID are valid
+## Check if API key and Environment UUID are valid
 
 This API method verifies the validity of the provided API key and Environment UUID. It's used to ensure that the integration is properly configured with a valid environment and API credentials.
 
