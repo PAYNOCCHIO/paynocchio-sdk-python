@@ -82,7 +82,7 @@ client = Client(
     # UUID generated on your side and related to user account 
     user_uuid=user,
     # Enable test mode
-    test_mode=True
+    test_mode="on"
 )
 
 ```
