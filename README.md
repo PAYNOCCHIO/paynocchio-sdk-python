@@ -80,7 +80,7 @@ client = Client(
     # UUID of your wallet group obtained at Paynocchio control panel
     environment_uuid="a2860217-a6b2-4fb9-9a7b-32e217651e16",  
     # UUID generated on your side and related to user account 
-    user_uuid=user,
+    user_uuid=str(user),
     # Enable test mode
     test_mode="on"
 )
