@@ -14,7 +14,7 @@ def topup_wallet(self, data: dict) -> dict:
 
     Parameters:
         data (dict): A dictionary containing the following required keys:
-            environment_uuid (UUID): The unique identifier of the environment where the operation is performed.
+            environment_uuid (UUID): The unique identifier of the wallet group where the operation is performed.
             user_uuid (UUID): The unique identifier of the user whose wallet will be credited.
             wallet_uuid (UUID): The unique identifier of the wallet to be credited.
             amount (float): The amount of money to be added to the wallet.
@@ -29,7 +29,7 @@ def topup_wallet(self, data: dict) -> dict:
                 company_id (UUID): The unique identifier of the company handling the transaction.
                 company_stripe_account (str): The associated Stripe account (e.g., "acct_1QAB4bPuDcQQWLF5").
                 currency (str): The currency in which the transaction will be processed (e.g., "USD").
-                environment_uuid (UUID): The unique identifier of the environment where the transaction occurs.
+                environment_uuid (UUID): The unique identifier of the wallet group where the transaction occurs.
                 interaction_method (str): The method used for the transaction (e.g., "web").
                 payment_request_uuid (UUID): A unique identifier for the payment request.
                 stripe_product_id (str): The identifier for the Stripe product associated with the top-up.
@@ -52,7 +52,7 @@ def payment_wallet(self, data: dict) -> dict:
 
     Parameters:
         data (dict): A dictionary containing the following keys:
-            environment_uuid (UUID): The unique identifier of the environment where the payment is made.
+            environment_uuid (UUID): The unique identifier of the wallet group where the payment is made.
             user_uuid (UUID): The unique identifier of the user making the payment.
             wallet_uuid (UUID): The unique identifier of the user's wallet to be charged.
             external_order_id (UUID): A unique identifier for the external order related to the payment.
@@ -80,7 +80,7 @@ def withdraw_wallet(self, data: dict) -> dict:
 
     Parameters:
         data (dict): A dictionary containing the following keys:
-            environment_uuid (str): The unique identifier for the environment where the transaction is made.
+            environment_uuid (str): The unique identifier for the wallet group where the transaction is made.
             user_uuid (str): The unique identifier for the user requesting the withdrawal.
             wallet_uuid (str): The unique identifier for the user's wallet from which the funds are to be withdrawn.
             currency (str): The ISO 4217 3-letter code for the transaction currency (e.g., "USD").
@@ -89,7 +89,7 @@ def withdraw_wallet(self, data: dict) -> dict:
     Returns:
         dict: A dictionary containing the following keys:
             schemas (dict): Details of the withdrawal transaction:
-                environment_uuid (str): The unique identifier of the environment.
+                environment_uuid (str): The unique identifier of the wallet group.
                 user_uuid (str): The unique identifier of the user.
                 wallet_uuid (str): The unique identifier of the wallet used for the withdrawal.
                 type_operation (str): The type of operation performed, in this case "payment_operation_withdraw".

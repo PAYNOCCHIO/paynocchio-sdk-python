@@ -10,12 +10,12 @@
 **[Team](#Team)** |
 
 ## Overview
-PAYNOCCHIO is more than a typical payment processing service. We provide a comprehensive solution, operating as a ledger infrastructure. Our integrated services include roles as an issuing processor and program manager, along with offering closed-loop wallets. This enhances our extensive capabilities in payment processing.
+[PAYNOCCHIO](https://paynocchio.com) is more than a typical payment processing service. We provide a comprehensive solution, operating as a ledger infrastructure. Our integrated services include roles as an issuing processor and program manager, along with offering closed-loop wallets. This enhances our extensive capabilities in payment processing.
 
 ## Before you begin
 
-- Register at Paynocchio control panel
-- Create at least one environment and add at least one API key 
+- Register at [Paynocchio control panel](https://paynocchio.com)
+- Create at least one wallet group and add at least one API key 
 
 ## Quickstart
 
@@ -43,7 +43,7 @@ pip3 install paynocchio
 
 # Paynocchio Client Example
 
-This example demonstrates how to integrate and use the Paynocchio API to create a wallet for a specific user in a controlled environment.
+This example demonstrates how to integrate and use the Paynocchio API to create a wallet for a specific user in a controlled wallet group.
 
 ## Steps:
 
@@ -56,12 +56,12 @@ This example demonstrates how to integrate and use the Paynocchio API to create 
 3. **Establish a Client Connection**:  
    To interact with the Paynocchio API, create an instance of the `Client` class. You'll need:
    - `api_key`: The API key obtained from the Paynocchio control panel.
-   - `environment_uuid`: The environment UUID, also from the control panel, representing your operating environment.
+   - `environment_uuid`: The environment UUID, also from the control panel, representing your operating wallet group.
    - `user_uuiid`: A unique identifier for the user (UUID format), generated on your system.
    - `test_mode`: Set to `true` to enable testing without affecting live data.
 
 4. **Create a Wallet for the User**:  
-   Using the `create_wallet` method, a wallet is created for the user within a specific environment. You'll pass a dictionary containing the environment UUID and user UUID as part of the request.
+   Using the `create_wallet` method, a wallet is created for the user within a specific wallet group. You'll pass a dictionary containing the environment UUID and user UUID as part of the request.
 
 ## Example Code
 
@@ -77,7 +77,7 @@ user = uuid4()
 client = Client(
     # API obtained at Paynocchio control panel
     api_key="6e229b0e-7a4d-4952-b8e9-c8fb2d33219d", 
-    # UUID of your environment obtained at Paynocchio control panel
+    # UUID of your wallet group obtained at Paynocchio control panel
     environment_uuid="a2860217-a6b2-4fb9-9a7b-32e217651e16",  
     # UUID generated on your side and related to user account 
     user_uuid=user,
@@ -89,12 +89,12 @@ client = Client(
 
 ### Create Wallet
 
- Create wallet for specified user with specified environment
+ Create wallet for specified user with specified wallet group
 
 #### Example Code
 
 ```python
-# Create wallet by environment UUID and user UUID
+# Create wallet by wallet group UUID and user UUID
 wallet = client.create_wallet(
     data={
         "environment_uuid": "a2860217-a6b2-4fb3-9a7b-32e123651e16",
@@ -106,7 +106,7 @@ wallet = client.create_wallet(
 
 **Request Parameters**
 - **environment_uuid** (string, required):
-The UUID representing the environment where the reward group is configured. This parameter defines the context for the commissions and bonuses.
+The UUID representing the wallet group where the reward group is configured. This parameter defines the context for the commissions and bonuses.
 
 - **user_uuid** (string, required):
 The UUID of the user for whom the calculation is being made. This identifies the external user tied to the transaction.
@@ -156,7 +156,7 @@ The UUID of the actual wallet status obtained with `client.get_status()` functio
 
 ### Get Wallet Group Status
 
-This example demonstrates how to retrieve the structure and status of wallets within a specific environment using the Paynocchio API. The `wallet_environment_structure` method provides details about wallet groups and their statuses for a particular user in a specified environment.
+This example demonstrates how to retrieve the structure and status of wallets within a specific wallet group using the Paynocchio API. The `wallet_environment_structure` method provides details about wallet groups and their statuses for a particular user in a specified environment.
 
 #### Example Code
 

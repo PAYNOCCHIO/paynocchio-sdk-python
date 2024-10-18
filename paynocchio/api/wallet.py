@@ -14,11 +14,11 @@ def create_wallet(self, data: dict) -> dict:
     Creates a wallet for a specified user with a given type.
 
     This method allows for the creation of a wallet, linking it to a user in the external system
-    while specifying the environment in which the wallet will operate.
+    while specifying the wallet group in which the wallet will operate.
 
     Args:
         data (dict): A dictionary containing the following required parameters:
-            environment_uuid (str): The UUID of the admin panel environment (required).
+            environment_uuid (str): The UUID of the admin panel wallet group (required).
             user_uuid (str): The UUID of the user from the external system (required).
 
     Returns:
@@ -42,7 +42,7 @@ def create_wallet(self, data: dict) -> dict:
 
     Notes:
         Ensure that the UUIDs provided are valid and correspond to existing records.
-        The wallet will be created in the specified environment and linked to the specified user.
+        The wallet will be created in the specified wallet group and linked to the specified user.
     """
     return self.sign_request('wallet', 'POST', '/wallet', body_data=data)
 
@@ -57,7 +57,7 @@ def update_wallet_status(self, data: dict) -> dict:
     Args:
         data (dict): A dictionary containing the following required parameters:
             uuid (str): The UUID of the wallet to be updated (Admin panel Wallet ID).
-            environment_uuid (str): The UUID of the admin panel environment (required).
+            environment_uuid (str): The UUID of the admin panel wallet group (required).
             user_uuid (str): The UUID of the user from the external system (required).
             status_uuid (str): The UUID of the new status to be assigned to the wallet (required).
 
@@ -91,22 +91,22 @@ def update_wallet_status(self, data: dict) -> dict:
 
 def wallet_environment_structure(self, params: dict) -> dict:
     """
-    Retrieves the current structure of the wallet environment, including settings and rewarding groups with rules.
+    Retrieves the current structure of the wallet group, including settings and rewarding groups with rules.
 
-    This method provides detailed information about the wallet environment, such as company UUID, created date,
+    This method provides detailed information about the wallet group, such as company UUID, created date,
     transaction limits, and rules for rewarding groups.
 
     Args:
         params (dict): A dictionary containing the following required parameters:
             user_uuid (str): The UUID of the user in the external system (required).
-            environment_uuid (str): The UUID of the admin panel environment (required).
+            environment_uuid (str): The UUID of the admin panel wallet group (required).
 
     Returns:
-        dict: A dictionary containing the wallet environment structure with the following fields:
-            uuid (str): The unique identifier for the wallet environment (UUID4).
-            title (str): The title or name of the wallet environment.
-            company_uuid (str): The unique identifier for the company associated with this environment (UUID4).
-            created_at (str, ISO 8601 format): The date and time when the wallet environment was created.
+        dict: A dictionary containing the wallet group structure with the following fields:
+            uuid (str): The unique identifier for the wallet group (UUID4).
+            title (str): The title or name of the wallet group.
+            company_uuid (str): The unique identifier for the company associated with this wallet group (UUID4).
+            created_at (str, ISO 8601 format): The date and time when the wallet group was created.
             keys_number (int): The number of keys associated with the wallet.
             card_balance_limit (int): The limit on the card balance.
             daily_transaction_limit (int): The limit on daily transactions.
@@ -114,7 +114,7 @@ def wallet_environment_structure(self, params: dict) -> dict:
             minimum_topup_amount (int): The minimum amount that can be topped up.
             bonus_conversion_rate (float): The conversion rate for bonuses.
             allow_withdraw (bool): Indicates whether withdrawals are permitted.
-            rewarding_groups (list): A list of rewarding groups associated with this environment, containing:
+            rewarding_groups (list): A list of rewarding groups associated with this wallet group, containing:
                 title (str): The title of the rewarding group.
                 date_from (str, ISO 8601 format): The start date of the rewarding group.
                 date_to (str, ISO 8601 format): The end date of the rewarding group.

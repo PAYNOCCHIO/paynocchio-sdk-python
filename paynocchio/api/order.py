@@ -13,7 +13,7 @@ def get_order(self, order_uuid: str, params: dict) -> dict:
     """
     Get an order by its UUID.
 
-    This request fetches detailed information about a specific order using the order's UUID, user UUID, and environment UUID. The request includes signature validation and test mode switching via headers.
+    This request fetches detailed information about a specific order using the order's UUID, user UUID, and wallet group UUID. The request includes signature validation and test mode switching via headers.
 
     params:
         environment_uuid: UUID Admin panel environment ID.
