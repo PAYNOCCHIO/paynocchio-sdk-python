@@ -14,12 +14,26 @@ class ResponseError(Exception):
 
 
 status_bad = {
-    'wallet': {
+    'health': {
         500: ServerError,
         422: FieldRequiredError,
         400: ResponseError,
     },
-    'transaction': {
+    'operation': {
+        500: ServerError,
+        422: FieldRequiredError,
+        400: ResponseError,
+    },
+    'order': {
+        500: ServerError,
+        422: FieldRequiredError,
+        400: ResponseError,
+    },
+    'status': {
+        500: ServerError,
+        400: ResponseError,
+    },
+    'wallet': {
         500: ServerError,
         422: FieldRequiredError,
         400: ResponseError,

@@ -4,14 +4,21 @@ import json
 from paynocchio.check_response import exception_catch
 
 
-def sign_request(self, api: str, method: str, endpoint: str, params: dict = None, body_data: dict = None) -> dict:
+def sign_request(
+        self,
+        api: str,
+        method: str,
+        endpoint: str,
+        params: dict = None,
+        body_data: dict = None
+) -> dict:
     url = f'https://{self.base_uri}{endpoint}'
     response = requests.request(
         method=method,
         url=url,
         headers={
             "X-Wallet-Signature": self.api_key,
-            "X-API-KEY": "X-API-KEY"
+            "X-Test-Mode-Switch": self.test_mode
             },
         data=json.dumps(body_data),
         params=params

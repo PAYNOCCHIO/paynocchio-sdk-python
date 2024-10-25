@@ -22,7 +22,7 @@ setup(
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent'
   ],
-  keywords='paynocchio sdk ',
+  keywords='paynocchio sdk wallet',
   project_urls={
     'GitHub': 'https://github.com/PAYNOCCHIO/paynocchio-api-alpha/tree/main'
   },
